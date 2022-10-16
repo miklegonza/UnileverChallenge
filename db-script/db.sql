@@ -10,7 +10,7 @@ USE unilever ;
 CREATE TABLE IF NOT EXISTS unilever.turnos (
   id INT(10) NOT NULL AUTO_INCREMENT,
   operario VARCHAR(80) NOT NULL,
-  horario DATETIME NOT NULL,
+  horario VARCHAR(20) NOT NULL,
   PRIMARY KEY (id));
 
 -- -----------------------------------------------------
