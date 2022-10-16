@@ -1,14 +1,15 @@
 const express = require('express');
 
-const formulaRouter = require('./src/routes/formula.route');
+//const formulaRouter = require('./src/routes/formula.route');
 const lineasRouter = require('./src/routes/lineas.route');
 const mantenimientoRouter = require('./src/routes/mantenimiento.route');
 const maquinasRouter = require('./src/routes/maquinas.route');
 const materiaPrimaRouter = require('./src/routes/materia-prima.route');
-const productoRouter = require('./src/routes/producto.route');
+//const productoRouter = require('./src/routes/producto.route');
 const pruebasRouter = require('./src/routes/pruebas.route');
 const registroRouter = require('./src/routes/registro.route');
 const turnosRouter = require('./src/routes/turnos.route');
+const tiemposRouter = require('./src/routes/tiempos.route');
 
 
 require('dotenv').config();
@@ -28,6 +29,7 @@ app.use('/materia-prima', materiaPrimaRouter);
 app.use('/pruebas', pruebasRouter);
 app.use('/registro', registroRouter);
 app.use('/turnos', turnosRouter);
+app.use('/tiempos', tiemposRouter);
 
 
 app.use((req, res, next) => {

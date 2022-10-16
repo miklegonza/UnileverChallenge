@@ -23,3 +23,13 @@ INSERT INTO lineas(id,cantidad_maquinas, cantidad_productos, tipo_linea, turnos)
 INSERT INTO lineas(id,cantidad_maquinas, cantidad_productos, tipo_linea, turnos) VALUES(4,12,200,'Cuidado de la piel',2);
 INSERT INTO lineas(id,cantidad_maquinas, cantidad_productos, tipo_linea, turnos) VALUES(5,12,700,'Aseo personal',2);
 
+INSERT INTO producto (id, nombre, tiempo_produccion, tiempo_limpieza, fecha_vencimiento, registro, linea) VALUES
+    (1, 'jabon', 20, 20, NOW(), 1,1),
+    (2, 'shampoo', 20, 20, NOW(), 1,1),
+    (3, 'desodorante', 20, 20, NOW(), 1,1),
+    (4, 'maizena', 20, 20, NOW(), 1,1),
+    (5, 'te', 20, 20, NOW(), 1,1);.
+
+
+
+
