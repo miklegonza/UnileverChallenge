@@ -1,18 +1,13 @@
-/**
- * El .route.js define las rutas de cada una de las peticiones
- */
+const express = require("express");
+const router = express.Router();
+const materiaPrimaController = require("../controllers/materia-prima.controller");
 
- const express = require('express');
- const router = express.Router();
- const controller = require('../controllers/materia-prima.controller');
- 
- router.get('/', controller.get);
- 
- router.post('/', controller.create);
- 
- router.put('/:id', controller.update);
- 
- router.delete('/:id', controller.remove);
- 
- module.exports = router;
- 
+router.get("/", materiaPrimaController.get);
+
+router.post("/", materiaPrimaController.create);
+
+router.put("/:id", materiaPrimaController.update);
+
+router.delete("/:id", materiaPrimaController.remove);
+
+module.exports = router;
