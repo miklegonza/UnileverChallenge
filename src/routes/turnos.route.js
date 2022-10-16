@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/turnos.controller');
+const turnosController = require('../controllers/turnos.controller');
 
-router.get('/', controller.get);
+router.get('/', turnosController.get);
 
-router.post('/', controller.create);
+router.post('/', turnosController.create);
 
-router.put('/:id', controller.update);
+router.put('/:id', turnosController.update);
 
-router.delete('/:id', controller.remove);
+router.delete('/:id', turnosController.remove);
 
 module.exports = router;

@@ -16,34 +16,33 @@ async function get (page =1, username) {
     return { data, meta };
 }
 
-async function create(object) {
+async function create(turno) {
     const data = [
-        object.id,
-        object.operario,
-        object.horario
+        turno.operario,
+        turno.horario
     ];
-    let stmt = "INSERT INTO " + config.db.database + ".turnos (id, operario, horario) VALUES (?,?,?)";
+    let stmt = "INSERT INTO " + config.db.database + ".turnos (operario, horario) VALUES (?, ?)";
     const result = await pool.query(stmt, data);
-    return result.affectedRows ? "Registro creado": "Error al crear el registro";
+    return result.affectedRows ? "Turno creado": "Error al crear el turno";
 
 }
 
-async function update(id, object) {
+async function update(id, turno) {
     const data = [
-        object.id,
-        object.operario,
-        object.horario
+        turno.operario,
+        turno.horario,
+        id
     ];
-    let stmt = "UPDATE" + config.db.database + ".turnos SET column = ? WHERE id = ?;";
+    let stmt = "UPDATE " + config.db.database + ".turnos SET operario = ?, horario = ? WHERE id = ?;";
     const result = await pool.query(stmt, data);
-    return result.affectedRows ? "Registro modificado": "Error al modificar registro";
+    return result.affectedRows ? "Turno modificado": "Error al modificar turno";
 }
 
 
 async function remove(id) {
     let stmt = "DELETE FROM " + config.db.database + ".turnos WHERE id = ?;";
     const result = await pool.query(stmt, id);
-    return result.affectedRows ? "Registro eliminado": "No se pudo eliminar el registro";
+    return result.affectedRows ? "Turno eliminado": "No se pudo eliminar el turno";
 }
 
 module.exports = { get, create, update, remove };
