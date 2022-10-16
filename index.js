@@ -1,5 +1,13 @@
 const express = require('express');
-const router = require('./src/routes/path-to-router')
+const formulaRouter = require('./src/routes/formula.route');
+const lineasRouter = require('./src/routes/lineas.route');
+const mantenimientoRouter = require('./src/routes/mantenimiento.route');
+const maquinasRouter = require('./src/routes/maquinas.route');
+const materiaPrimaRouter = require('./src/routes/materia-prima.route');
+const productoRouter = require('./src/routes/producto.route');
+const pruebasRouter = require('./src/routes/pruebas.route');
+const registroRouter = require('./src/routes/registro.route');
+const turnosRouter = require('./src/routes/turnos.route');
 
 require('dotenv').config();
 const app = express();
@@ -9,7 +17,15 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//app.use('/route', router);
+//app.use('/formula', formulaRouter);
+//app.use('/lineas', lineasRouter);
+app.use('/mantenimiento', mantenimientoRouter);
+app.use('/maquinas', maquinasRouter);
+//app.use('/materia-prima', materiaPrimaRouter);
+//app.use('/producto', productoRouter);
+app.use('/pruebas', pruebasRouter);
+//app.use('/registro', registroRouter);
+//app.use('/turnos', turnosRouter);
 
 app.use((req, res, next) => {
     var err = new Error('Not Found');
