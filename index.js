@@ -1,5 +1,9 @@
 const express = require('express');
+
+const router = require('./src/routes/registro.route');
+
 const router = require('./src/routes/producto.route')
+
 
 require('dotenv').config();
 const app = express();
@@ -9,7 +13,11 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+app.use('/registro', router);
+
 app.use('/prod', router);
+
 
 app.use((req, res, next) => {
     var err = new Error('Not Found');
