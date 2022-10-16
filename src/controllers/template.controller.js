@@ -1,6 +1,8 @@
-//require service
+/**
+ * El .controller.js se encarga de ser un mediador entre la lógica y la petición HTTP
+ */
 
-const clasificacionService = require('../services/clasificacion.service');
+const service = require('../services/path-to-service');
 
 async function get(req, res, next) {
     try {

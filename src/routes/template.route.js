@@ -1,6 +1,10 @@
+/**
+ * El .route.js define las rutas de cada una de las peticiones
+ */
+
 const express = require('express');
 const router = express.Router();
-//require controller
+const controller = require('../controllers/path-to-controller');
 
 router.get('/', controller.get);
 

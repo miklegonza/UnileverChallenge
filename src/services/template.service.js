@@ -1,9 +1,16 @@
+/**
+ * El .service.js se encarga de toda la lógica de negocio y la interacción con la base de datos
+ */
+
 const pool = require("./db.service");
 const helper = require("../utils/helper.util");
 const config = require("../configs/db.config");
 
 async function get(page = 1, username) {
-    let stmt = (typeof username == "undefined") ? "SELECT * FROM " + config.db.database + ".table;" : "SELECT * FROM " + config.db.database + ".table WHERE usuario = ?;";
+    let stmt = "SELECT * FROM " + config.db.database + ".table";
+
+    if (typeof username != "undefined")
+        stmt += " WHERE usuario = ?";
 
     const rows = await pool.query(stmt, username);
     const data = helper.emptyOrRows(rows);

@@ -1,5 +1,5 @@
 const express = require('express');
-//require router
+const router = require('./src/routes/path-to-router')
 
 require('dotenv').config();
 const app = express();
@@ -9,7 +9,13 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/usuarios', router);
+//app.use('/route', router);
+
+app.use((req, res, next) => {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;

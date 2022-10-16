@@ -32,7 +32,7 @@ npm install
 DB_HOST = localhost
 DB_USER = your-user
 DB_PASS = your-password
-DB_NAME = moneybox
+DB_NAME = unilever
 DB_PORT = 3306
 
 PORT = 3000
