@@ -125,6 +125,15 @@ CREATE TABLE IF NOT EXISTS unilever.materia_prima (
   fecha_vencimiento DATE NOT NULL,
   PRIMARY KEY (id));
 
+
+INSERT INTO producto (nombre, tiempo_produccion, tiempo_limpieza, fecha_vencimiento, registro, linea) VALUES ();
+
+UPDATE materia_prima SET cantidad_stock = 2500 where id = 1;
+
+select*from registros;
+
+
+
 -- -----------------------------------------------------
 -- Table unilever.formula
 -- -----------------------------------------------------
@@ -144,3 +153,34 @@ CREATE TABLE IF NOT EXISTS unilever.formula (
     REFERENCES unilever.materia_prima (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+    
+    
+	CREATE TABLE registros (
+    id INT NOT NULL auto_increment,
+    descripción VARCHAR (100) NOT NULL,
+    fecha DATE NOT NULL,
+    PRIMARY KEY(id)
+    );
+    
+    
+    
+    -- -------------------------- INICIO DISPARADORES CADA QUE SE ESTÉ ACABANDO UN PRODUCTO -----------------
+    
+    
+DELIMITER $$
+CREATE TRIGGER modificacion_materia AFTER UPDATE ON materia_prima
+FOR EACH ROW BEGIN 
+INSERT INTO registros (descripción, fecha) VALUES 
+("Se ha realizado un cambio en la cantidad de materia prima",sysdate());
+END$$
+        
+        
+        
+        
+DELIMITER $$ 
+CREATE TRIGGER modificacion_producto AFTER UPDATE ON producto
+FOR EACH ROW BEGIN 
+INSERT INTO registros (descripción, fecha) VALUES 
+("Se ha realizado un cambio en la cantidad de productos disponibles",sysdate());
+END$$
+        
